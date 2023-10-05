@@ -15,7 +15,7 @@
 
 Welcome to the OWASP WrongSecrets game! The game is packed with real life examples of how to _not_ store secrets in your software. Each of these examples is captured in a challenge, which you need to solve using various tools and techniques. Solving these challenges will help you recognize common mistakes & can help you to reflect on your own secrets management strategy.
 
-Can you solve all the 35 challenges?
+Can you solve all the 37 challenges?
 
 Try some of them on [our Heroku demo environment](https://wrongsecrets.herokuapp.com/) or on our [Okteto demo environment (might need to awake again)](https://wrongsecrets-commjoen.cloud.okteto.net/).
 
@@ -31,7 +31,6 @@ Want to play the other challenges? Read the instructions on how to set them up b
 -   [Basic docker exercises](#basic-docker-exercises)
     -   [Running these on Heroku](#running-these-on-heroku)
     -   [Running these on Render.io](#running-these-on-renderio)
-    -   [Running on Fly.io](#running-on-flyio)
 -   [Basic K8s exercise](#basic-k8s-exercise)
     -   [Minikube based](#minikube-based)
     -   [k8s based](#k8s-based)
@@ -72,7 +71,7 @@ Copyright (c) 2020-2023 Jeroen Willemsen and WrongSecrets contributors.
 
 ## Basic docker exercises
 
-_Can be used for challenges 1-4, 8, 12-32, 34, 35_
+_Can be used for challenges 1-4, 8, 12-32, 34, 35-37_
 
 For the basic docker exercises you currently require:
 
@@ -115,6 +114,8 @@ Now you can try to find the secrets by means of solving the challenge offered at
 -   [localhost:8080/challenge/32](http://localhost:8080/challenge/32)
 -   [localhost:8080/challenge/34](http://localhost:8080/challenge/34)
 -   [localhost:8080/challenge/35](http://localhost:8080/challenge/35)
+-   [localhost:8080/challenge/36](http://localhost:8080/challenge/36)
+-   [localhost:8080/challenge/37](http://localhost:8080/challenge/37)
 
 Note that these challenges are still very basic, and so are their explanations. Feel free to file a PR to make them look
 better ;-).
@@ -133,14 +134,9 @@ Want to deploy yourself with Render? Click the button below:
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/OWASP/wrongsecrets)
 
 
-### Running on Fly.io
-*status: experimental*
-
-You can test them out at [https://wrongsecrets.fly.dev](https://wrongsecrets.fly.dev) as well! Please understand that we run on a free-tier instance, we cannot give any guarantees. Please do not fuzz and/or try to bring it down: you would be spoiling it for others that want to testdrive it.
-
 ## Basic K8s exercise
 
-_Can be used for challenges 1-6, 8, 12-35_
+_Can be used for challenges 1-6, 8, 12-37_
 
 ### Minikube based
 
@@ -197,7 +193,7 @@ Don't want to go over the hassle of setting up K8S yourself? visit [https://wron
 
 ## Vault exercises with minikube
 
-_Can be used for challenges 1-8, 12-35_
+_Can be used for challenges 1-8, 12-37_
 Make sure you have the following installed:
 
 -   minikube with docker (or comment out line 8 and work at your own k8s setup),
@@ -215,7 +211,7 @@ This is because if you run the start script again it will replace the secret in 
 
 ## Cloud Challenges
 
-_Can be used for challenges 1-35_
+_Can be used for challenges 1-37_
 
 **READ THIS**: Given that the exercises below contain IAM privilege escalation exercises,
 never run this on an account which is related to your production environment or can influence your account-over-arching
@@ -272,6 +268,7 @@ Top contributors:
 -   [Joss Sparkes @remakingeden](https://github.com/remakingeden)
 -   [Marcin Nowak @drnow4u](https://github.com/drnow4u)
 -   [Tibor Hercz @tiborhercz](https://github.com/tiborhercz)
+-   [Rodolfo Cabral Neves @roddas](https://github.com/roddas)
 -   [Chris Elbring Jr. @neatzsche](https://github.com/neatzsche)
 -   [Puneeth Y @puneeth072003](https://github.com/puneeth072003)
 -   [Mike Woudenberg @mikewoudenberg](https://github.com/mikewoudenberg)
@@ -423,11 +420,11 @@ You can use the OWASP Dependency-checker by calling `mvn dependency-check:aggreg
 
 ### Get the project started in IntelliJ IDEA
 
-Requirements: make sure you have the following tools installed: [Docker](https://www.docker.com/products/docker-desktop/), [Java17 JDK](https://jdk.java.net/17/), [NodeJS 20](https://nodejs.org/en/download/current) and [IntelliJ IDEA](https://www.jetbrains.com/idea/download).
+Requirements: make sure you have the following tools installed: [Docker](https://www.docker.com/products/docker-desktop/), [Java21 JDK](https://jdk.java.net/21/), [NodeJS 20](https://nodejs.org/en/download/current) and [IntelliJ IDEA](https://www.jetbrains.com/idea/download).
 
 1. Fork and clone the project as described in the [documentation](https://github.com/OWASP/wrongsecrets/blob/master/CONTRIBUTING.md).
 2. Import the project in IntelliJ (e.g. import as mvn project / local sources)
-3. Go to the project settings and make sure it uses Java17 (And that the JDK can be found)
+3. Go to the project settings and make sure it uses Java21 (And that the JDK can be found)
 4. Go to the IDE settings>Language & Frameworks > Lombok and make sure Lombok processing is enabled
 5. Open the Maven Tab in your IDEA and run "Reload All Maven Projects" to make the system sync and download everything. Next, in that same tab use the "install" option as part of the OWASP WrongSecrets Lifecycle to genereate the asciidoc and such.
 6. Now run the `main` method in `org.owasp.wrongsecrets.WrongSecretsApplication.java`. This should fail with a stack trace.
@@ -440,7 +437,7 @@ Feel free to edit and propose changes via pull requests. Be sure to follow our g
 
 Please note that we officially only support Linux and MacOS for development. If you want to develop using a Windows machine, use WSL2 or a virtual machine running Linux. We did include Windows detection & a bunch of `exe` files for a first experiment, but are looking for active maintainers of them. Want to make sure it runs on Windows? Create PRs ;-).
 
-If, after reading this section, you still have no clue on the application code: Have a look [at some tutorials on Spring boot from Baeldung](https://www.baeldung.com/spring-boot)
+If, after reading this section, you still have no clue on the application code: Have a look [at some tutorials on Spring boot from Baeldung](https://www.baeldung.com/spring-boot).
 
 ### Automatic reload during development
 
