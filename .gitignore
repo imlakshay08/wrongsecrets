@@ -81,3 +81,11 @@ node_modules
 cypress/videos
 cypress/screenshots
 cypress/downloads
+py_env
+tmp/
+.env
+contributors_file*
+
+##documentation
+scripts/sort_contibutors/.env
+scripts/sort_contibutors/contributors_file.*
