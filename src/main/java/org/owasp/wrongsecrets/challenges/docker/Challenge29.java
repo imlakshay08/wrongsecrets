@@ -1,7 +1,5 @@
 package org.owasp.wrongsecrets.challenges.docker;
 
-import static org.owasp.wrongsecrets.RuntimeEnvironment.Environment.DOCKER;
-
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -10,62 +8,19 @@ import java.nio.file.Paths;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.spec.PKCS8EncodedKeySpec;
-import java.util.List;
 import javax.crypto.Cipher;
 import lombok.extern.slf4j.Slf4j;
-import org.owasp.wrongsecrets.RuntimeEnvironment;
-import org.owasp.wrongsecrets.ScoreCard;
-import org.owasp.wrongsecrets.challenges.Challenge;
-import org.owasp.wrongsecrets.challenges.ChallengeTechnology;
-import org.owasp.wrongsecrets.challenges.Difficulty;
-import org.owasp.wrongsecrets.challenges.Spoiler;
-import org.springframework.core.annotation.Order;
+import org.owasp.wrongsecrets.challenges.FixedAnswerChallenge;
 import org.springframework.stereotype.Component;
 
 /** This challenge is about finding a secret in a Github issue (screenshot). */
-@Component
 @Slf4j
-@Order(29)
-public class Challenge29 extends Challenge {
-
-  public Challenge29(ScoreCard scoreCard) {
-    super(scoreCard);
-  }
+@Component
+public class Challenge29 extends FixedAnswerChallenge {
 
   @Override
-  public boolean canRunInCTFMode() {
-    return true;
-  }
-
-  @Override
-  public Spoiler spoiler() {
-    return new Spoiler(decryptActualAnswer());
-  }
-
-  @Override
-  public boolean answerCorrect(String answer) {
-    return decryptActualAnswer().equals(answer);
-  }
-
-  public List<RuntimeEnvironment.Environment> supportedRuntimeEnvironments() {
-    return List.of(DOCKER);
-  }
-
-  /** {@inheritDoc} */
-  @Override
-  public int difficulty() {
-    return Difficulty.EASY;
-  }
-
-  /** {@inheritDoc} Documentation based. */
-  @Override
-  public String getTech() {
-    return ChallengeTechnology.Tech.DOCUMENTATION.id;
-  }
-
-  @Override
-  public boolean isLimitedWhenOnlineHosted() {
-    return false;
+  public String getAnswer() {
+    return decryptActualAnswer();
   }
 
   private byte[] decode(byte[] encoded, PrivateKey privateKey) throws Exception {

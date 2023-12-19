@@ -122,7 +122,7 @@ def fetch_repository(project: str, user_token: str) -> list:
                'Accept': 'application/vnd.github+json',
                'Authorization': 'Bearer ' + user_token}
     r = requests.get('https://api.github.com/repos/OWASP/' +
-                     project + '/contributors', headers=headers, timeout=20)
+                     project + '/contributors?per_page=100', headers=headers, timeout=20)
     if r.status_code == 401:
         print("Invalid token")
         os._exit(-1)
@@ -182,6 +182,11 @@ token = os.getenv('USER_TOKEN')
 
 if token is not None:
 
+    contributors = [
+        {'username': 'f3rn0s', 'name': 'f3rn0s'},
+        {'username': 'szh', 'name': 'Shlomo Zalman Heigh'},
+    ]
+
     testers = [
         {'username': 'davevs', 'name': 'Dave van Stein'},
         {'username': 'drnow4u', 'name': 'Marcin Nowak'},
@@ -194,6 +199,7 @@ if token is not None:
     ]
     special_thanks = [
         {'username': 'madhuakula', 'name': 'Madhu Akula @madhuakula'},
+        {'username': 'nbaars', 'name': 'Nanne Baars @nbaars'},
         {'username': 'bkimminich', 'name': 'Björn Kimminich'},
         {'username': 'devsecops', 'name': 'Dan Gora'},
         {'username': 'saragluna', 'name': 'Xiaolu Dai'},

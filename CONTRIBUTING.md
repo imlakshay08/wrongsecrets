@@ -235,7 +235,7 @@ There under the **_Application_** section click on the button shown below.
 
 **_Fill out_** all the fields as shown below.
 
-![Fill out the fields(The working directory depends on the enviroment setup): | Build and run: org.owasp.wrongsecrets.WrongSecretsApplication : -Dserver.port=8080 - Dspring.profiles.active=local,without-vault. | Working directory: /Users/razr/workspace/owasp/wrongsecrets | Environment variables: K8S_ENV=docker| Packages and classes to include in covarege data: org.owasp.wrongsecrets.*| ](images/fill-fields-7.4.png)
+![Fill out the fields(The working directory depends on the enviroment setup): | Build and run: org.owasp.wrongsecrets.WrongSecretsApplication : --server.port=8080 --spring.profiles.active=local,without-vault. | Working directory: /Users/razr/workspace/owasp/wrongsecrets | Environment variables: K8S_ENV=docker| Packages and classes to include in covarege data: org.owasp.wrongsecrets.*| ](images/fill-fields-7.4.png)
 
 Again press **_Shift+F10_** which runs the Application.
 
@@ -267,82 +267,37 @@ First make sure that you have an [Issue](https://github.com/OWASP/wrongsecrets/i
 
 Add the **new challenge** in this folder `wrongsecrets/src/main/java/org/owasp/wrongsecrets/challenges/`.
 These are the things that you have to keep in mind.
--   First and foremost make sure your challenge is coded in **Java**.
--   Don't forget to add your challenge number in `@Order(28)` annotation, **_28_** in my case.
--   Here is an example of a possible Challenge 28:
+- First and foremost make sure your challenge is coded in **Java**.
+- Use either `FixedAnswerChallenge` as a class to extend or use the `Challenge` interface to imnplement.
+
+The `FixedAnswerChallenge` can be used for challenges that don't have a dependency on other (sub)systems. Here is an example of a possible Challenge 28:
 
 ```java
     package org.owasp.wrongsecrets.challenges.docker;
     import lombok.extern.slf4j.Slf4j;
     import org.owasp.wrongsecrets.RuntimeEnvironment;
     import org.owasp.wrongsecrets.ScoreCard;
-    import org.owasp.wrongsecrets.challenges.Challenge;
+    import org.owasp.wrongsecrets.challenges.FixedAnswerChallenge;
     import org.owasp.wrongsecrets.challenges.ChallengeTechnology;
     import org.owasp.wrongsecrets.challenges.Spoiler;
     import org.springframework.core.annotation.Order;
     import org.springframework.stereotype.Component;
     import java.util.List;
     /**
-    * Describe what your challenge does
-    */
+     * Describe what your challenge does
+     */
     @Slf4j
     @Component
-    @Order(28) //make sure this number is the same as your challenge
-    public class Challenge28 extends Challenge {
-    private final String secret;
-    public Challenge28(ScoreCard scoreCard) {
-    super(scoreCard);
-    secret = "hello world";
-    }
-    //is this challenge usable in CTF mode?
-    @Override
-    public boolean canRunInCTFMode() {
-    return true;
-    }
-    //return the plain text secret here
-    @Override
-    public Spoiler spoiler() {
-    return new Spoiler(secret);
-    }
-    //here you validate if your answer matches the secret
-    @Override
-    public boolean answerCorrect(String answer) {
-    return secret.equals(answer);
-    }
-    //which runtime can you use to run the challenge on? (You can just use Docker here)
-    /**
-    * {@inheritDoc}
-    */
-    @Override
-    public List<RuntimeEnvironment.Environment> supportedRuntimeEnvironments() {
-    return List.of(RuntimeEnvironment.Environment.DOCKER);
-    }
-    //set the difficulty: 1=low, 5=very hard
-    /**
-    * {@inheritDoc}
-    * Difficulty: 1.
-    */
-    @Override
-    public int difficulty() {
-    return 1;
-    }
-    //on which tech is this challenge? See ChallengeTechnology.Tech for categories
-    /**
-    * {@inheritDoc}
-    * Secrets based.
-    */
-    @Override
-    public String getTech() {
-    return ChallengeTechnology.Tech.SECRETS.id;
-    }
-    //if you use this in a shared environment and need to adapt it, then return true here.
-    @Override
-    public boolean isLimittedWhenOnlineHosted() {
-    return false;
+    public class Challenge28 extends FixedAnswerChallenge {
+    private final String secret = "hello world";
 
-                }
-            }
+    public String getAnswer() {
+      return secret;
+    }
+}
 ```
+However, if there is a dependency on external components, then you can better implement the interface `Challenge` directly instead of `FixedAnswerChallenge`. For example, see [`Challenge36`](https://github.com/OWASP/wrongsecrets/blob/master/src/main/java/org/owasp/wrongsecrets/challenges/docker/Challenge36.java), where we have to interact with external binaries.
+
 ### Step 3: Adding Test File.
 
 Add the **new TestFile** in this folder `wrongsecrets/src/test/java/org/owasp/wrongsecrets/challenges/`. TestFile is required to do **unit testing.**
@@ -350,27 +305,23 @@ These are the things that you have to keep in mind.
 
  Make sure that this file is also of **Java** type.
 Here is a unit test for reference:
+
 ```java
     package org.owasp.wrongsecrets.challenges.docker;
     import org.assertj.core.api.Assertions;
     import org.junit.jupiter.api.Test;
-    import org.junit.jupiter.api.extension.ExtendWith;
-    import org.mockito.Mock;
-    import org.mockito.Mockito;
-    import org.mockito.junit.jupiter.MockitoExtension;
-    import org.owasp.wrongsecrets.ScoreCard;
-    @ExtendWith(MockitoExtension.class)
+
     class Challenge28Test {
-      @Mock
-      private ScoreCard scoreCard;
+
       @Test
       void rightAnswerShouldSolveChallenge() {
-          var challenge = new Challenge28(scoreCard);
+          var challenge = new Challenge28();
           Assertions.assertThat(challenge.solved("wrong answer")).isFalse();
           Assertions.assertThat(challenge.solved(challenge.spoiler().solution())).isTrue();
       }
     }
 ```
+
 Please note that PRs for new challenges are only accepted when unit tests are added to prove that the challenge works. Normally tests should not immediately leak the actual secret, so leverage the `.spoil()` functionality of your test implementation for this.
 
 ### Step 4: Adding explanations, reasons and hints.
@@ -410,5 +361,28 @@ Use this block as refrence for hints:
     This challenge is only meant for helping new contributors to add new challenges. Please, have fun with trying more difficult challenges;-).
 ```
 
-### Step 5: Submitting your PR.
+
+### Step 5: Add challenge configuration.
+
+In this step we configure the challenge to make it known to the application.
+Open `src/main/resources/wrong_secrets_configuration.yaml` and add the following configuration:
+
+```yaml
+    - name: Challenge 28
+      url: "challenge-28"
+      # For each environment you can add a different implementation and documentation
+      sources:
+        # Fully qualified name of the class
+        - class-name: "org.owasp.wrongsecrets.challenges.docker.Challenge28"
+          explanation: "explanations/challenge28.adoc"
+          hint: "explanations/challenge28_hint.adoc"
+          reason: "explanations/challenge28_reason.adoc"
+          environments: *docker_envs
+      difficulty: *easy
+      category: *secrets
+      ctf:
+        enabled: true
+```
+
+### Step 6: Submitting your PR.
 After completing all the above steps, final step is to submit the PR and refer [**Contributing.md**](https://github.com/OWASP/wrongsecrets/blob/master/CONTRIBUTING.md#how-to-get-your-pr-accepted) on how to get your PR accepted.

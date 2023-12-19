@@ -15,7 +15,7 @@
 
 Welcome to the OWASP WrongSecrets game! The game is packed with real life examples of how to _not_ store secrets in your software. Each of these examples is captured in a challenge, which you need to solve using various tools and techniques. Solving these challenges will help you recognize common mistakes & can help you to reflect on your own secrets management strategy.
 
-Can you solve all the 41 challenges?
+Can you solve all the 42 challenges?
 
 Try some of them on [our Heroku demo environment](https://wrongsecrets.herokuapp.com/) or on our [Okteto demo environment (might need to awake again)](https://wrongsecrets-commjoen.cloud.okteto.net/).
 
@@ -72,7 +72,7 @@ Copyright (c) 2020-2023 Jeroen Willemsen and WrongSecrets contributors.
 
 ## Basic docker exercises
 
-_Can be used for challenges 1-4, 8, 12-32, 34, 35-41_
+_Can be used for challenges 1-4, 8, 12-32, 34, 35-42_
 
 For the basic docker exercises you currently require:
 
@@ -87,40 +87,41 @@ docker run -p 8080:8080 jeroenwillemsen/wrongsecrets:latest-no-vault
 
 Now you can try to find the secrets by means of solving the challenge offered at:
 
--   [localhost:8080/challenge/1](http://localhost:8080/challenge/1)
--   [localhost:8080/challenge/2](http://localhost:8080/challenge/2)
--   [localhost:8080/challenge/3](http://localhost:8080/challenge/3)
--   [localhost:8080/challenge/4](http://localhost:8080/challenge/4)
--   [localhost:8080/challenge/8](http://localhost:8080/challenge/8)
--   [localhost:8080/challenge/12](http://localhost:8080/challenge/12)
--   [localhost:8080/challenge/13](http://localhost:8080/challenge/13)
--   [localhost:8080/challenge/14](http://localhost:8080/challenge/14)
--   [localhost:8080/challenge/15](http://localhost:8080/challenge/15)
--   [localhost:8080/challenge/16](http://localhost:8080/challenge/16)
--   [localhost:8080/challenge/17](http://localhost:8080/challenge/17)
--   [localhost:8080/challenge/18](http://localhost:8080/challenge/18)
--   [localhost:8080/challenge/19](http://localhost:8080/challenge/19)
--   [localhost:8080/challenge/20](http://localhost:8080/challenge/20)
--   [localhost:8080/challenge/21](http://localhost:8080/challenge/21)
--   [localhost:8080/challenge/22](http://localhost:8080/challenge/22)
--   [localhost:8080/challenge/23](http://localhost:8080/challenge/23)
--   [localhost:8080/challenge/24](http://localhost:8080/challenge/24)
--   [localhost:8080/challenge/25](http://localhost:8080/challenge/25)
--   [localhost:8080/challenge/26](http://localhost:8080/challenge/26)
--   [localhost:8080/challenge/27](http://localhost:8080/challenge/27)
--   [localhost:8080/challenge/28](http://localhost:8080/challenge/28)
--   [localhost:8080/challenge/29](http://localhost:8080/challenge/29)
--   [localhost:8080/challenge/30](http://localhost:8080/challenge/30)
--   [localhost:8080/challenge/31](http://localhost:8080/challenge/31)
--   [localhost:8080/challenge/32](http://localhost:8080/challenge/32)
--   [localhost:8080/challenge/34](http://localhost:8080/challenge/34)
--   [localhost:8080/challenge/35](http://localhost:8080/challenge/35)
--   [localhost:8080/challenge/36](http://localhost:8080/challenge/36)
--   [localhost:8080/challenge/37](http://localhost:8080/challenge/37)
--   [localhost:8080/challenge/38](http://localhost:8080/challenge/38)
--   [localhost:8080/challenge/39](http://localhost:8080/challenge/39)
--   [localhost:8080/challenge/40](http://localhost:8080/challenge/40)
--   [localhost:8080/challenge/41](http://localhost:8080/challenge/41)
+-   [localhost:8080/challenge/challenge-1](http://localhost:8080/challenge/challenge-1)
+-   [localhost:8080/challenge/challenge-2](http://localhost:8080/challenge/challenge-2)
+-   [localhost:8080/challenge/challenge-3](http://localhost:8080/challenge/challenge-3)
+-   [localhost:8080/challenge/challenge-4](http://localhost:8080/challenge/challenge-4)
+-   [localhost:8080/challenge/challenge-8](http://localhost:8080/challenge/challenge-8)
+-   [localhost:8080/challenge/challenge-12](http://localhost:8080/challenge/challenge-12)
+-   [localhost:8080/challenge/challenge-13](http://localhost:8080/challenge/challenge-13)
+-   [localhost:8080/challenge/challenge-14](http://localhost:8080/challenge/challenge-14)
+-   [localhost:8080/challenge/challenge-15](http://localhost:8080/challenge/challenge-15)
+-   [localhost:8080/challenge/challenge-16](http://localhost:8080/challenge/challenge-16)
+-   [localhost:8080/challenge/challenge-17](http://localhost:8080/challenge/challenge-17)
+-   [localhost:8080/challenge/challenge-18](http://localhost:8080/challenge/challenge-18)
+-   [localhost:8080/challenge/challenge-19](http://localhost:8080/challenge/challenge-19)
+-   [localhost:8080/challenge/challenge-20](http://localhost:8080/challenge/challenge-20)
+-   [localhost:8080/challenge/challenge-21](http://localhost:8080/challenge/challenge-21)
+-   [localhost:8080/challenge/challenge-22](http://localhost:8080/challenge/challenge-22)
+-   [localhost:8080/challenge/challenge-23](http://localhost:8080/challenge/challenge-23)
+-   [localhost:8080/challenge/challenge-24](http://localhost:8080/challenge/challenge-24)
+-   [localhost:8080/challenge/challenge-25](http://localhost:8080/challenge/challenge-25)
+-   [localhost:8080/challenge/challenge-26](http://localhost:8080/challenge/challenge-26)
+-   [localhost:8080/challenge/challenge-27](http://localhost:8080/challenge/challenge-27)
+-   [localhost:8080/challenge/challenge-28](http://localhost:8080/challenge/challenge-28)
+-   [localhost:8080/challenge/challenge-29](http://localhost:8080/challenge/challenge-29)
+-   [localhost:8080/challenge/challenge-30](http://localhost:8080/challenge/challenge-30)
+-   [localhost:8080/challenge/challenge-31](http://localhost:8080/challenge/challenge-31)
+-   [localhost:8080/challenge/challenge-32](http://localhost:8080/challenge/challenge-32)
+-   [localhost:8080/challenge/challenge-34](http://localhost:8080/challenge/challenge-34)
+-   [localhost:8080/challenge/challenge-35](http://localhost:8080/challenge/challenge-35)
+-   [localhost:8080/challenge/challenge-36](http://localhost:8080/challenge/challenge-36)
+-   [localhost:8080/challenge/challenge-37](http://localhost:8080/challenge/challenge-37)
+-   [localhost:8080/challenge/challenge-38](http://localhost:8080/challenge/challenge-38)
+-   [localhost:8080/challenge/challenge-39](http://localhost:8080/challenge/challenge-39)
+-   [localhost:8080/challenge/challenge-40](http://localhost:8080/challenge/challenge-40)
+-   [localhost:8080/challenge/challenge-41](http://localhost:8080/challenge/challenge-41)
+-   [localhost:8080/challenge/challenge-42](http://localhost:8080/challenge/challenge-42)
 
 Note that these challenges are still very basic, and so are their explanations. Feel free to file a PR to make them look
 better ;-).
@@ -145,7 +146,7 @@ If you want to host WrongSecrets on Railway, you can do so by deploying [this on
 
 ## Basic K8s exercise
 
-_Can be used for challenges 1-6, 8, 12-41_
+_Can be used for challenges 1-6, 8, 12-42_
 
 ### Minikube based
 
@@ -169,9 +170,9 @@ The K8S setup currently is based on using Minikube for local fun:
 
 now you can use the provided IP address and port to further play with the K8s variant (instead of localhost).
 
--   [localhost:8080/challenge/5](http://localhost:8080/challenge/5)
--   [localhost:8080/challenge/6](http://localhost:8080/challenge/6)
--   [localhost:8080/challenge/33](http://localhost:8080/challenge/33)
+-   [localhost:8080/challenge/challenge-5](http://localhost:8080/challenge/challenge-5)
+-   [localhost:8080/challenge/challenge-6](http://localhost:8080/challenge/challenge-6)
+-   [localhost:8080/challenge/challenge-33](http://localhost:8080/challenge/challenge-33)
 
 ### k8s based
 
@@ -190,9 +191,9 @@ Want to run vanilla on your own k8s? Use the commands below:
 
 now you can use the provided IP address and port to further play with the K8s variant (instead of localhost).
 
--   [localhost:8080/challenge/5](http://localhost:8080/challenge/5)
--   [localhost:8080/challenge/6](http://localhost:8080/challenge/6)
--   [localhost:8080/challenge/33](http://localhost:8080/challenge/33)
+-   [localhost:8080/challenge/challenge-5](http://localhost:8080/challenge/challenge-5)
+-   [localhost:8080/challenge/challenge-6](http://localhost:8080/challenge/challenge-6)
+-   [localhost:8080/challenge/challenge-33](http://localhost:8080/challenge/challenge-33)
 
 ### Okteto based
 
@@ -202,7 +203,7 @@ Don't want to go over the hassle of setting up K8S yourself? visit [https://wron
 
 ## Vault exercises with minikube
 
-_Can be used for challenges 1-8, 12-41_
+_Can be used for challenges 1-8, 12-42_
 Make sure you have the following installed:
 
 -   minikube with docker (or comment out line 8 and work at your own k8s setup),
@@ -220,7 +221,7 @@ This is because if you run the start script again it will replace the secret in 
 
 ## Cloud Challenges
 
-_Can be used for challenges 1-41_
+_Can be used for challenges 1-42_
 
 **READ THIS**: Given that the exercises below contain IAM privilege escalation exercises,
 never run this on an account which is related to your production environment or can influence your account-over-arching
@@ -258,7 +259,7 @@ Therefore, you can manipulate them by overriding the following settings in your 
 
 -   `hints_enabled=false` will turn off the `Show hints` button.
 -   `reason_enabled=false` will turn of the `What's wrong?` explanation button.
--   `spoiling_enabled=false` will turn off the `/spoil-x` endpoint (where `x` is the number of the challenge).
+-   `spoiling_enabled=false` will turn off the `/spoil/challenge-x` endpoint (where `x` is the short-name of the challenge).
 
 ## Enabling Swaggerdocs and UI
 
@@ -291,13 +292,16 @@ Contributors:
 - [Filip Chyla @fchyla](https://www.github.com/fchyla)
 - [Dmitry Litosh @Dlitosh](https://www.github.com/Dlitosh)
 - [Turjo Chowdhury @turjoc120](https://www.github.com/turjoc120)
+- [Norbert Wolniak @nwolniak](https://www.github.com/nwolniak)
 - [Josh Grossman @tghosth](https://www.github.com/tghosth)
 - [alphasec @alphasecio](https://www.github.com/alphasecio)
+- [CaduRoriz @CaduRoriz](https://www.github.com/CaduRoriz)
 - [Madhu Akula @madhuakula](https://www.github.com/madhuakula)
 - [Mike Woudenberg @mikewoudenberg](https://www.github.com/mikewoudenberg)
 - [Spyros @northdpole](https://www.github.com/northdpole)
-- [RubenAtBinx @RubenAtBinx](https://www.github.com/RubenAtBinx)
 - [Vineeth Jagadeesh @djvinnie](https://www.github.com/djvinnie)
+- [RubenAtBinx @RubenAtBinx](https://www.github.com/RubenAtBinx)
+- [za @za](https://www.github.com/za)
 - [Alex Bender @alex-bender](https://www.github.com/alex-bender)
 - [Nicolas Humblot @nhumblot](https://www.github.com/nhumblot)
 - [Rick M @kingthorin](https://www.github.com/kingthorin)
@@ -446,7 +450,7 @@ Requirements: make sure you have the following tools installed: [Docker](https:/
 4. Go to the IDE settings>Language & Frameworks > Lombok and make sure Lombok processing is enabled
 5. Open the Maven Tab in your IDEA and run "Reload All Maven Projects" to make the system sync and download everything. Next, in that same tab use the "install" option as part of the OWASP WrongSecrets Lifecycle to genereate the asciidoc and such.
 6. Now run the `main` method in `org.owasp.wrongsecrets.WrongSecretsApplication.java`. This should fail with a stack trace.
-7. Now go to the run configuration of the app and make sure you have the active profile `without-vault`. This is done by setting the VM options arguments to `-Dserver.port=8080 -Dspring.profiles.active=local,without-vault`. Set `K8S_ENV=docker` as environment argument.
+7. Now go to the run configuration of the app and make sure you have the active profile `without-vault`. This is done by setting the VM options arguments to `--server.port=8080 --spring.profiles.active=local,without-vault`. Set `K8S_ENV=docker` as environment argument.
 8. Repeat step 6: run the app again, you should have a properly running application which is visitable in your browser at http://localhost:8080.
 
 **Pictorial Guide** on how to get the project started in IntelliJ IDEA is available at [_Contributing.md_](https://github.com/OWASP/wrongsecrets/blob/master/CONTRIBUTING.md#how-to-get-started-with-the-project-in-intellij-idea).
@@ -474,7 +478,7 @@ Follow the steps below on adding a challenge:
 1. First make sure that you have an [Issue](https://github.com/OWASP/wrongsecrets/issues) reported for which a challenge is really wanted.
 2. Add the new challenge in the `org.owasp.wrongsecrets.challenges` folder. Make sure you add an explanation in `src/main/resources/explanations` and refer to it from your new Challenge class.
 3. Add unit, integration and UI tests as appropriate to show that your challenge is working.
-4. Don't forget to add `@Order` annotation to your challenge ;-).
+4. Do not forget to configure the challenge in `src/main/resources/wrong-secrets-configuration.yaml`
 5. Review the [CONTRIBUTING guide](CONTRIBUTING.md) for setting up your contributing environment and writing good commit messages.
 
 For more details please refer [_Contributing.md_](https://github.com/OWASP/wrongsecrets/blob/master/CONTRIBUTING.md#how-to-add-a-challenge).
@@ -489,8 +493,12 @@ If you have made some changes to the codebase or added a new challenge and would
 1. Ensure you have bash installed and open.
 2. Navigate to .github/scripts.
 3. Run the docker-create script `bash docker-create.sh`.
+   - Note: Do you want to run this on your minikube? then first run `eval $(minikube docker-env)`.
 4. Follow any instructions given, you made need to install/change packages.
-5. Run the newly created container `docker run -p 8080:8080 jeroenwillemsen/wrongsecrets:local-test`
+5. Run the newly created container:
+  - to running locally: `docker run -p 8080:8080 jeroenwillemsen/wrongsecrets:local-test-no-vault`
+  - to run it on your minikube: use the container `jeroenwillemsen/wrongsecrets:local-test-k8s-vault` in your deployment definition.
+  - to run it with Vault on your minikube: use the container `jeroenwillemsen/wrongsecrets:local-test-local-vault` in your deployment definition.
 
 ## Want to play, but are not allowed to install the tools?
 
